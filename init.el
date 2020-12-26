@@ -1,5 +1,6 @@
 ;;; Package config -- see https://melpa.org/#/getting-started
 (require 'package)
+;;; Code
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
@@ -135,8 +136,5 @@
   (advice-add 'python-mode :before 'elpy-enable))
 
 
-
-;;; Enable Flycheck
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;;; Enable flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
