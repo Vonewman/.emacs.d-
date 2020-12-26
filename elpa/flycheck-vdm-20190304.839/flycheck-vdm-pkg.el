@@ -1,0 +1,2 @@
+;;; Generated package description from /home/vonewman/.emacs.d/elpa/flycheck-vdm-20190304.839/flycheck-vdm.el  -*- no-byte-compile: t -*-
+(define-package "flycheck-vdm" "20190304.839" "Syntax checking for vdm-mode" '((emacs "24") (flycheck "32snapshot") (vdm-mode "0.0.4")) :commit "89e7db6ee1a89b8c1f7ce36ce6800c32b5c4ba2d" :authors '(("Peter W. V. Tran-Jørgensen" . "peter.w.v.jorgensen@gmail.com")) :maintainer '("Peter W. V. Tran-Jørgensen" . "peter.w.v.jorgensen@gmail.com") :keywords '("languages") :url "https://github.com/peterwvj/vdm-mode")
