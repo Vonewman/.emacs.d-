@@ -53,7 +53,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(flycheck-vdm flycheck elpy doom-themes json-mode smartparens prettier-js which-key magit helm-projectile projectile helm company use-package)))
+   '(flymd edit-indirect markdown-mode company-jedi python-mode flycheck-vdm flycheck elpy doom-themes json-mode smartparens prettier-js which-key magit helm-projectile projectile helm company use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -135,6 +135,23 @@
   :init
   (advice-add 'python-mode :before 'elpy-enable))
 
+(elpy-enable)
+(setq elpy-rpc-python-command "python3")
 
-;;; Enable flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;;; Temporary file management
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+
+;;; Markdown-Mode
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;;; Flymd
+(require 'flymd)
